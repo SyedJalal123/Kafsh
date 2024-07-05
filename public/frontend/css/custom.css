@@ -8,6 +8,12 @@ a{
     color:#000;
     text-decoration: none;
 }
+.fw-500 {
+    font-weight: 500;
+}
+.fw-600 {
+    font-weight: 600;
+}
 .main-heading {
     font-family: Poppins;
     font-weight: 600;

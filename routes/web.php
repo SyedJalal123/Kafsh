@@ -28,6 +28,22 @@ Route::get('/', function () {
     $home = 1;
     return view('frontend.home_',compact('products','home','collections'));
 });
+Route::get('/about-us', function () {
+    return view('frontend.about-us');
+});
+Route::get('/contact-us', function () {
+    return view('frontend.contact-us');
+});
+Route::get('/refund-policy', function () {
+    return view('frontend.refund-policy');
+});
+Route::get('/terms-conditions', function () {
+    return view('frontend.terms-conditions');
+});
+Route::get('/collection', function () {
+    $collections = Collection::all();
+    return view('frontend.collections',compact('collections'));
+});
 Route::get('products/{slug}', function ($slug) {
     $product_page = 1;
     $product = Product::where('slug',$slug)->with('variations')->first();
@@ -117,6 +133,7 @@ Route::post('/change_qty', [App\Http\Controllers\CartController::class, 'change_
 Route::get('/remove_from_cart/{id}/{variation}/{modal_value}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('remove_from_cart');
 Route::get('cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::post('cart', [App\Http\Controllers\CartController::class, 'store'])->name('cart');
+Route::post('newsletter', [App\Http\Controllers\CartController::class, 'newsletter'])->name('newsletter');
 // Route::post('order_email',[App\Http\Controllers\CartController::class, 'order_email'])->name('order_email');
 
 Route::get('thank-you/{id}', [App\Http\Controllers\CartController::class, 'thank_you'])->name('thank-you');
@@ -137,6 +154,6 @@ Route::middleware('auth','back_auth')->group(function(){
         Route::resource('order', OrderController::class);
         Route::post('fullfill_orders', [App\Http\Controllers\OrderController::class, 'fullfill_orders'])->name('fullfill_orders');
         Route::resource('customer', CustomerController::class);
-        
+
     });
 });

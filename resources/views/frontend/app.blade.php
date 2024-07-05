@@ -84,6 +84,11 @@
     @yield('sidebar')
 
     <header>
+        @if(Session::has('success-subscribed'))
+            <input type="hidden" id="success-subscribed" value="1">
+        @else
+            <input type="hidden" id="success-subscribed" value="0">
+        @endif
         <div class="Info__Bar">
             <a class="Info__Bar__Text" href="#">Free delivery on orders over £250</a>
             <ul class="Info__Bar__Menu">
@@ -112,7 +117,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="{{asset('frontend/js/jQuery-3.7.1.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-    
+    <script src="{{asset('frontend/js/sweetalert2.js')}}"></script>
+
     <script>
         document.addEventListener('click',function(e){
             // Hamburger menu
@@ -167,6 +173,17 @@
                     }
                 }
             });
+            
+            if($('#success-subscribed').val() == 1){
+                Swal.fire({
+                    icon: "success",
+                    title: "Successfully Subscribed",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    showCloseButton: true,
+                    footer: '<a href="'+PR_URL+'/collectinos/all" class="btn-3">GO TO SHOP</a>'
+                });
+            }
         });
         function addCommas(nStr){
             nStr += '';

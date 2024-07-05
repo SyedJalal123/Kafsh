@@ -80,6 +80,7 @@ class CartController extends Controller
             $customer->save();
         }else{
             if($customer->city == null){
+                $customer->name = $request->name;
                 $customer->phone = $request->phone;
                 $customer->whatsapp = $request->whatsapp;
                 $customer->address = $request->address;
@@ -224,6 +225,19 @@ class CartController extends Controller
 
             return "success";
         }
+    }
+    public function newsletter(Request $request){
+        $customer = Customer::where('email',$request->email)->first();
+
+        if($customer == null){
+            $customer = new Customer;
+            $customer->name = explode('@', $request->email)[0];
+            $customer->email = $request->email;
+            $customer->save();
+        }
+
+        Session::flash('success-subscribed', 'Subscribed');
+        return redirect()->back();
     }
     protected function sessionData($product){
         // dd($product['images'][0]);
