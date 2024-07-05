@@ -137,5 +137,6 @@ Route::middleware('auth','back_auth')->group(function(){
         Route::resource('order', OrderController::class);
         Route::post('fullfill_orders', [App\Http\Controllers\OrderController::class, 'fullfill_orders'])->name('fullfill_orders');
         Route::resource('customer', CustomerController::class);
+        
     });
 });
