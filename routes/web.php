@@ -53,6 +53,7 @@ Route::get('products/{slug}', function ($slug) {
     }else{
         $carts = [];
     }
+    
     return view('frontend.product',compact('product','carts','product_page','products'));
 });
 Route::get('collections/{collection}', function ($collection_slug) {

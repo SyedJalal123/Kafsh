@@ -11,7 +11,7 @@ use App\Models\Collection;
 use App\Models\Cart;
 use App\Mail\OrderMail;
 use App\Mail\OrderMailCustomer;
-
+use Artisan;
 use Session;
 
 class CartController extends Controller
@@ -33,7 +33,7 @@ class CartController extends Controller
     }
     public function store (Request $request) {
         // dd($request->all());
-
+        // Artisan::call('config:cache');
         $last_order = Order::orderBy('id','desc')->first();
         if($last_order == null){
             $o_no = 1000;

@@ -162,27 +162,27 @@
                 <hr>
                 <h3 class="main-heading mt-4">You may also like</h3>
                 <div class="row container-fluid mt-4 home-grid featured-product-grid">
-                    @foreach($products as $key => $product)
+                    @foreach($products as $key => $product_d)
                     @if($key == 3) @break @endif
                     <div class="col-md-3 col-sm-4 col-8 product-grid">
                         <div class="image-box">
-                            <a href="{{url('products')}}/{{$product->slug}}"  class="image-box-2">
-                                <img class="image-1" src="{{asset($product->images[0])}}" alt="{{$product->title}}">
-                                <img class="image-2" src="{{asset($product->images[1])}}" alt="{{$product->title}}">
+                            <a href="{{url('products')}}/{{$product_d->slug}}"  class="image-box-2">
+                                <img class="image-1" src="{{asset($product_d->images[0])}}" alt="{{$product_d->title}}">
+                                <img class="image-2" src="{{asset($product_d->images[1])}}" alt="{{$product_d->title}}">
                             </a>
                             <div class="badge">
-                                @php $per = ($product->price * 100) / $product->compare_price; @endphp
+                                @php $per = ($product_d->price * 100) / $product_d->compare_price; @endphp
                                 <span>{{number_format(100 - $per, 0)}}%</span>
                             </div>
                             <div class="grid-buttons">
-                                <a data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#quickview_model" onclick="quick_view({{$product}})">
+                                <a data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#quickview_model" onclick="quick_view({{$product_d}})">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
                                         <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
                                     </svg>
                                     <span class="grid-buttons-text">Quick view</span>
                                 </a>
-                                <a data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#quickshop_model" onclick="quick_shop({{$product}})">
+                                <a data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#quickshop_model" onclick="quick_shop({{$product_d}})">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                         <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
                                     </svg>
@@ -201,9 +201,9 @@
                         <div class="text-box">
                             <a class="brand-text" href="#">Kafsh</a>
                             <h3>
-                                <a href="#">{{$product->title}}</a>
+                                <a href="#">{{$product_d->title}}</a>
                             </h3>
-                            <span>PKR {{$product->price}}</span>
+                            <span>PKR {{$product_d->price}}</span>
                         </div>
                     </div>
                     @endforeach
@@ -268,7 +268,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-person-circle"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                    <input type="text" class="form-control name" name="name" placeholder="Name" required>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +281,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-telephone-fill"></i></div>
                                     </div>
-                                    <input type="integer" class="form-control" name="phone" placeholder="Phone" required>
+                                    <input type="integer" class="form-control phone" name="phone" placeholder="Phone" required>
                                 </div>
                             </div>
                         </div>
@@ -294,7 +294,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-whatsapp"></i></div>
                                     </div>
-                                    <input type="integer" class="form-control" name="whatsapp" placeholder="Whatsapp (optional)">
+                                    <input type="integer" class="form-control whatsapp" name="whatsapp" placeholder="Whatsapp (optional)">
                                 </div>
                             </div>
                         </div>
@@ -307,7 +307,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                     </div>
-                                    <input type="email" class="form-control" name="email" placeholder="Email (optional)">
+                                    <input type="email" class="form-control email" name="email" placeholder="Email (optional)">
                                 </div>
                             </div>
                         </div>
@@ -320,7 +320,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-geo-alt-fill"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="address" placeholder="Delivery Address" required>
+                                    <input type="text" class="form-control address" name="address" placeholder="Delivery Address" required>
                                 </div>
                             </div>
                         </div>
@@ -3406,7 +3406,8 @@
                 }
             });
 
-            variation_title = $('#variation-title-'+variation).val();
+            // variation_title = $('#variation-title-'+variation).val();
+            variation_title = document.getElementById('variation-title-'+variation).value;
             
             // Get Data
             $.ajax({
@@ -3451,7 +3452,8 @@
                 }
             });
 
-            variation_title = $('#view_variation-title-'+variation).val();
+            // variation_title = $('#view_variation-title-'+variation).val();
+            variation_title = document.getElementById('view_variation-title-'+variation).value;
             
             // Get Data
             $.ajax({
@@ -3604,7 +3606,8 @@
                 }
             });
             product_id = $('#product_id').val();
-            variation_title = $('#variation-title-'+variation).val();
+            variation_title = document.getElementById('variation-title-'+variation).value;
+            // variation_title = $('#variation-title-'+variation).val();
             quantity = $('#quantity_input').val();
             price = $('#product_price').val();
             total = quantity * price;
@@ -3640,7 +3643,8 @@
                 }
             });
 
-            variation_title = $('#view_variation-title-'+variation).val();
+            // variation_title = $('#view_variation-title-'+variation).val();
+            variation_title = document.getElementById('view_variation-title-'+variation).value;
 
 
             product_id = $('#view_modal_productId').val();
@@ -3685,7 +3689,8 @@
                 }
             });
 
-            variation_title = $('#variation-title-'+variation).val();
+            // variation_title = $('#variation-title-'+variation).val();
+            variation_title = document.getElementById('variation-title-'+variation).value;
 
 
             product_id = $('#cart_modal_productId').val();
