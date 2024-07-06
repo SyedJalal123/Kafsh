@@ -21,7 +21,7 @@
     <section class="main page-top-section">
         <h1 class="heading">Contact Us</h1>
     </section>
-    <section class="col-12 container">
+    <section class="col-12 container px-3 pt-4">
         <p class="text-2 poppins-all">
             <strong class="fw-600">Email</strong>: kafshwearings@gmail.com
             <br><br>

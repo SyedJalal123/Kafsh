@@ -89,6 +89,9 @@
         #buynow_modal, #quick_buynow_modal {
             z-index: 1061;
         }
+        .logo-box-phone {
+            margin-left: 31% !important;
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{url('frontend/css/splide.min.css')}}">
@@ -127,7 +130,7 @@
 @section('content')
     <section class="col-12 row collections m-0 py-5">
         @foreach ($collections as $collection)    
-            <a href="{{url('collections')}}/{{$collection->title}}" class="col-md-6 col-12 collection-item" style="background-image: url({{asset($collection->image)}});">
+            <a href="{{url('collections')}}/{{$collection->slug}}" class="col-md-6 col-12 collection-item" style="background-image: url({{asset($collection->image)}});">
                 {{-- <img src="{{asset($collection->image)}}" alt=""> --}}
                 <div class="collection-text">
                     <p class="collection-title-1 text-uppercase">Leather Collection</p>

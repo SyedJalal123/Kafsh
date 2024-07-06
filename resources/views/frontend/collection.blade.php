@@ -60,7 +60,7 @@
                             <div class="accordion-body p-0">
                                 <form method="GET" action="{{url('collections')}}" class="row">
 
-                                    <input type="hidden" name="collection_title" value="{{$collection_title}}">
+                                    <input type="hidden" name="collection_slug" value="{{$collection_slug}}">
                                     <input type="integer" class="col-4 m-1 input-1" name="min" value="{{$min}}" placeholder="Min" required>
                                     <input type="integer" class="col-4 m-1 input-1" name="max" value="{{$max}}" placeholder="Max" required>
                                     @if($sort != null)
@@ -84,7 +84,7 @@
 
 @section('content')
     <section class="main page-top-section">
-        <h1 class="heading">@if($collection_title == 'all') Products @else {{$collection_title}} @endif</h1>
+        <h1 class="heading">@if($collection_slug == 'all') Products @else {{$collection_slug}} @endif</h1>
         <div class="row mx-1 d-flex justify-content-between">
             <button class="btn-2 col-6 col-md-2" id="toggle-filter-side-bar">
                 <svg viewBox="0 0 30 30" id="filter" width="20" height="20">
@@ -96,7 +96,7 @@
             </button>
             <form method="GET" id="sort-form" action="{{url('collections')}}" class="row col-6 col-md-2">
 
-                <input type="hidden" name="collection_title" value="{{$collection_title}}">
+                <input type="hidden" name="collection_slug" value="{{$collection_slug}}">
                 @if($min != null)
                 <input type="hidden" name="min" value="{{$min}}">
                 <input type="hidden" name="max" value="{{$max}}">

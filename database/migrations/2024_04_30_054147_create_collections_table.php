@@ -18,6 +18,7 @@ class CreateCollectionsTable extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->string('status')->nullable();
+            $table->string('slug');
             $table->string('seo_title')->nullable();
             $table->longText('seo_description')->nullable();
             $table->timestamps();

@@ -12,7 +12,7 @@
                 {{-- <img class="rlogo d-none" src="{{asset('frontend/img/rlogo-white-.png')}}" alt="Kafsh"> --}}
             </a>
             <div class="header-buttons">
-                <a href="#">
+                <a href="#" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#searchbar_modal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" style="" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                     </svg>
@@ -55,16 +55,23 @@
                         </div>
                         {{-- <img class="rlogo-brand" src="{{asset('frontend/img/rlogo-white-.png')}}" alt="Kafsh"> --}}
                     </a>
-                    <a href="{{url('/cart')}}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-                        </svg>
-                    </a>
+                    <div>
+                        <a href="#" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#searchbar_modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" style="" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </a>
+                        <a href="{{url('/cart')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
                 <input type="hidden" value="0" id="navbar-background-input">
                 <div class="collapse navbar-collapse" id="navbar-content">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown dropdown-mega position-static">
+                        {{-- <li class="nav-item dropdown dropdown-mega position-static">
                             <a class="d-flex justify-content-between nav-link nav-link-parent" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#">
                                 <span class="nav-text">WOMEN</span>
                                 <svg class="pc-d-none" xmlns="http://www.w3.org/2000/svg" width="7.495" height="15.219" version="1.1" viewBox="0 0 5.687 10.377">
@@ -292,9 +299,18 @@
                                     </div>
                                 </div>
                             </div>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link nav-text" href="{{url('/')}}">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-text" href="#">R&B STORIES</a>
+                            <a class="nav-link nav-text" href="{{url('collection')}}">COLLECTIONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-text" href="{{url('collections/all')}}">PRODUCTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-text" href="{{url('contact-us')}}">CONTACT US</a>
                         </li>
                         <li class="nav-item nav-phone"></li>
                         <li class="nav-item nav-phone"></li>
@@ -303,9 +319,8 @@
                         <li class="nav-item nav-phone"></li>
                         <li class="nav-item nav-phone"></li>
                         <li class="nav-item nav-phone"></li>
-                        <li class="nav-item nav-phone"><a href="#" class="nav-text">Sign In</a></li>
-                        <li class="nav-item nav-phone"><a href="#" class="nav-text">Create an account</a></li>
-                        <li class="nav-item nav-phone"><a href="#" class="nav-text">Contact us</a></li>
+                        <li class="nav-item nav-phone"><a href="{{url('account')}}" class="nav-text">Account</a></li>
+                        <li class="nav-item nav-phone"><a href="{{url('contact-us')}}" class="nav-text">Contact us</a></li>
                     </ul>
                 </div>
             </div>

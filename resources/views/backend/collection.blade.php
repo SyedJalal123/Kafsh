@@ -101,7 +101,7 @@
                         <div class="row">
                             <div class="col-9 mb-10">
                                 <label class="required form-label">Title</label>
-                                <input type="text" class="form-control form-control-solid" name="title" placeholder="Title" required>
+                                <input type="text" class="form-control form-control-solid" onkeyup="add_slug()" name="title" id="title" placeholder="Title" required>
 
                                 <label class="required mt-10 form-label">Status</label>
                                 <div class="form-check ">
@@ -164,6 +164,10 @@
                                 <label class="form-label">SEO Description</label>
                                 <textarea class="form-control form-control-solid" name="seo_description" placeholder="SEO Description"></textarea>                        
                             </div>
+                            <div class="col-12 mb-10">
+                                <label class="form-label">Slug</label>
+                                <input type="text" class="form-control form-control-solid" id="slug" name="slug" placeholder="Slug" required>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -195,29 +199,32 @@
         $('#search_input').on( 'keyup', function () {
             table.search( this.value ).draw();
         } );
+        ClassicEditor.create(document.querySelector('#kt_docs_ckeditor_classic')).then(editor => {
+            console.log(editor);
+        }).catch(error => {
+            console.error(error);
+        });
+        
         function show_image(image){
-        $("#show_image").attr("src",hostUrl+image);
-        $("#download_button").attr("href",hostUrl+image);
-    }
-
-    ClassicEditor.create(document.querySelector('#kt_docs_ckeditor_classic')).then(editor => {
-        console.log(editor);
-    }).catch(error => {
-        console.error(error);
-    });
-
-    function remove_image(id){
-        $('#'+id).remove();
-    }
-    function change_type(){
-        var type = $('#package_type').val();
-        if(type == "Domestic"){
-            $('.type_box').removeClass('d-none');
-        }else{
-            $('.type_box').removeClass('d-none');
-            $('.type_box').addClass('d-none');
+            $("#show_image").attr("src",hostUrl+image);
+            $("#download_button").attr("href",hostUrl+image);
         }
-    }
+        function remove_image(id){
+            $('#'+id).remove();
+        }
+        function change_type(){
+            var type = $('#package_type').val();
+            if(type == "Domestic"){
+                $('.type_box').removeClass('d-none');
+            }else{
+                $('.type_box').removeClass('d-none');
+                $('.type_box').addClass('d-none');
+            }
+        }
+        function add_slug(){
+            title = $('#title').val().split(' ').join("-").toLowerCase();
+            $('#slug').val(title);
+        }
     </script>
 @endsection
 

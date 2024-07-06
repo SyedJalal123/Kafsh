@@ -55,24 +55,24 @@ Route::get('products/{slug}', function ($slug) {
     }
     return view('frontend.product',compact('product','carts','product_page','products'));
 });
-Route::get('collections/{collection}', function ($collection_title) {
+Route::get('collections/{collection}', function ($collection_slug) {
     $collection_page = 1;
     $min = null;
     $max = null;
     $sort = null;
-    if($collection_title == 'all'){
+    if($collection_slug == 'all'){
         $products = Product::with('variations')->get();
         $collection = null;
     }else{
-        $products = Product::where('collections','LIKE', "%".$collection_title."%")->with('variations')->get();
-        $collection = Collection::where('title',$collection_title)->first();
+        $collection = Collection::where('slug',$collection_slug)->first();
+        $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
     }
 
-    return view('frontend.collection',compact('collection_page','collection','collection_title','products','min','max','sort'));
+    return view('frontend.collection',compact('collection_page','collection','collection_slug','products','min','max','sort'));
 });
 Route::get('collections', function (Request $request) {
     $collection_page = 1;
-    $collection_title = $request->collection_title;
+    $collection_slug = $request->collection_slug;
     $min = $request->min;
     $max = $request->max;
     $sort = $request->sort;
@@ -88,17 +88,17 @@ Route::get('collections', function (Request $request) {
         $sort_value = 'asc';
     }
     
-    if($collection_title != 'all'){
+    if($collection_slug != 'all'){
+        $collection = Collection::where('slug',$request->collection_slug)->first();
         if($min !== null && $sort !== null){
-            $products = Product::where('collections','LIKE', "%".$request->collection_title."%")->where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
+            $products = Product::where('collections','LIKE', "%".$collection->title."%")->where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
         }else if($min == null && $sort != null){
-            $products = Product::where('collections','LIKE', "%".$request->collection_title."%")->orderBy($sort_column,$sort_value)->with('variations')->get();
+            $products = Product::where('collections','LIKE', "%".$collection->title."%")->orderBy($sort_column,$sort_value)->with('variations')->get();
         }else if($sort == null && $min != null){
-            $products = Product::where('collections','LIKE', "%".$request->collection_title."%")->where('price','>=',$request->min)->where('price','<=',$request->max)->with('variations')->get();
+            $products = Product::where('collections','LIKE', "%".$collection->title."%")->where('price','>=',$request->min)->where('price','<=',$request->max)->with('variations')->get();
         }else if($min == null && $sort == null){
-            $products = Product::where('collections','LIKE', "%".$request->collection_title."%")->with('variations')->get();
+            $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
         }
-        $collection = Collection::where('title',$request->collection_title)->first();
     }else{
         if($min !== null && $sort !== null){
             $products = Product::where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
@@ -112,7 +112,7 @@ Route::get('collections', function (Request $request) {
         $collection = null;
     }
 
-    return view('frontend.collection',compact('collection_page','collection','products','collection_title','min','max','sort'));
+    return view('frontend.collection',compact('collection_page','collection','products','collection_slug','min','max','sort'));
 });
 Route::get('/sign-up', function () {
     return view('frontend.signup');
@@ -134,6 +134,7 @@ Route::get('/remove_from_cart/{id}/{variation}/{modal_value}', [App\Http\Control
 Route::get('cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::post('cart', [App\Http\Controllers\CartController::class, 'store'])->name('cart');
 Route::post('newsletter', [App\Http\Controllers\CartController::class, 'newsletter'])->name('newsletter');
+Route::post('search_data', [App\Http\Controllers\CartController::class, 'search_data'])->name('search_data');
 // Route::post('order_email',[App\Http\Controllers\CartController::class, 'order_email'])->name('order_email');
 
 Route::get('thank-you/{id}', [App\Http\Controllers\CartController::class, 'thank_you'])->name('thank-you');

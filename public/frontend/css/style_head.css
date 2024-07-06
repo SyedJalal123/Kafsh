@@ -154,6 +154,7 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    margin-left: 8%;
   }
   .logo-box-phone .kafsh {
     font-size: 18px !important;
@@ -169,7 +170,13 @@
     margin-top: -3px !important;
     margin-right: -4px !important;
   }
+  #searchbar_modal {
+    padding-right: 0px !important;
+  }
   @media only screen and (min-width: 991px) { /* PC */
+    #searchbar_modal .modal-body {
+      padding: 49px 78px !important;
+    }
     .logo-box-phone {
       display: none !important;
     }
@@ -298,8 +305,6 @@
     .navbar{
       padding: 0px;
     }
-  }
-  @media only screen and (max-width: 768px) { /* Phones */
     .rlogo-brand{
       width: 150px !important;
     }
@@ -350,7 +355,7 @@
     color:white;
   }
   .nav-link:hover,.nav-link:active, .nav-link:focus {
-    color:#993324;
+    color:#993324 !important;
   }
   .nav-item{
     margin: 0 16px;

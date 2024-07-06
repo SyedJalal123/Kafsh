@@ -48,6 +48,7 @@ class CollectionController extends Controller
         }
 
         $collection->title = $request->title;
+        $collection->slug = $request->slug;
         if($request->status){
             $collection->status = 1;
         }else{
@@ -108,6 +109,7 @@ class CollectionController extends Controller
         }
 
         $collection->title = $request->title;
+        $collection->slug = $request->slug;
         if($request->status){
             $collection->status = 1;
         }else{

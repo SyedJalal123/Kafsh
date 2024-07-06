@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Customer;
+use App\Models\Collection;
 use App\Models\Cart;
 use App\Mail\OrderMail;
 use App\Mail\OrderMailCustomer;
@@ -238,6 +239,11 @@ class CartController extends Controller
 
         Session::flash('success-subscribed', 'Subscribed');
         return redirect()->back();
+    }
+    public function search_data(Request $request){
+        $products = Product::where('title','LIKE','%'.$request->val.'%')->get();
+        $collections = Collection::where('title','LIKE','%'.$request->val.'%')->get();
+        return [$products, $collections];
     }
     protected function sessionData($product){
         // dd($product['images'][0]);

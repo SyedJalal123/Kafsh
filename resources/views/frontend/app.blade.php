@@ -205,6 +205,57 @@
                 $('#'+button).prop('disabled', false);
             }
         }
+        function load_search_content(){
+            $('.search-bar-content').removeClass('d-none');
+            $('.loading').removeClass('d-none');
+            $('.search-bar-body').addClass('d-none');
+            $('.empty-data').addClass('d-none');
+            val = $('#search-bar').val();
+            
+            if(val == ""){
+                $('.search-bar-content').addClass('d-none');
+                $('.loading').addClass('d-none');
+            }else{
+                $.ajax({
+                    url: PR_URL+"/search_data",
+                    type: "POST",
+                    data:{ 
+                        val: val,
+                    },
+                    success: function(response){
+                        if(response[0].length == 0 && response[1].length == 0){
+                            $('.empty-data').removeClass('d-none');
+                            $('.loading').addClass('d-none');
+                        }else{
+                            $('.search-bar-body').removeClass('d-none');
+                            $('.loading').addClass('d-none');
+                            $('.search-bar-item').remove();
+
+                            html = '';
+                            for(i=0; i<response[0].length; i++){
+                                html += '<a href="'+PR_URL+'/products/'+response[0][i]['slug']+'" class="d-flex flex-row align-items-center search-bar-item p-1">'+
+                                            '<img src="'+PR_URL+'/'+response[0][i]['images'][0]+'" width="40" alt="">'+
+                                            '<h6 class="poppins-all ms-3">'+response[0][i]['title']+'</h6>'+
+                                        '</a>';
+                            }
+                            $('.search-bar-products').append(html);
+
+                            html = '';
+                            for(i=0; i<response[1].length; i++){
+                                html += '<a href="'+PR_URL+'/collections/'+response[1][i]['slug']+'" class="d-flex flex-row align-items-center search-bar-item p-1">'+
+                                            '<img src="'+PR_URL+'/'+response[1][i]['image']+'" width="60" alt="">'+
+                                            '<h6 class="poppins-all ms-3">'+response[1][i]['title']+'</h6>'+
+                                        '</a>';
+                            }
+                            $('.search-bar-collections').append(html);
+                        }
+                    }
+                });
+            }
+        }
+        function close_search_content(){
+            $('.search-bar-content').addClass('d-none');
+        }
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -214,6 +265,39 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
     @yield('scripts')
     @yield('models')
+    <div class="modal fade poppins-all" tabindex="-1" id="searchbar_modal">
+        <div class="modal-dialog w-100 modal-xl" style="margin:0px !important;max-width:100%;">
+            <div class="modal-content rounded-0">
+
+                <div class="modal-body cart-modal" style="padding:16px;background:#c3c3c3;">
+                     <!--begin::Close-->
+                     
+                    <!--end::Close-->
+                    <div>
+                        <div class="d-flex flex-row align-items-center">
+                            <input onkeyup="load_search_content()" type="text" name="search-bar" id="search-bar" class="w-100 input-1" placeholder="Search">
+                            <svg onclick="close_search_content()" width="38" height="38" style="margin-left: 10px;cursor: pointer;" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" data-bs-dismiss="modal" aria-label="Close">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </div>
+                        <div class="search-bar-content d-none">
+                            <span class="loading d-none">Loading ...</span>
+                            <span class="empty-data d-none">No Data Found</span>
+                            <div class="search-bar-body d-none row">
+                                <div class="search-bar-products p-3 col-md-7">
+                                    <h5 class="poppins-all">PRODUCTS</h5><hr>
+                                </div>
+                                <div class="search-bar-collections p-3 col-md-4 ms-md-3">
+                                    <h5 class="poppins-all">COLLECTIONS</h5><hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

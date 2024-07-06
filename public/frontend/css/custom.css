@@ -178,6 +178,22 @@ a{
     right: -7px;
     top: -7px;
 }
+.model-close-btn-2 {
+    background: #3f3e3e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 0px;
+    right: -7px;
+    top: -7px;
+}
+.model-close-btn-2:hover {
+    background-color: #555555;
+    color: white;
+    transition: .3s;
+}
 .model-close-btn:hover {
     background-color: #555555;
     color: white;
@@ -1433,4 +1449,32 @@ a{
     font-size: 32px;
     font-weight: 600;
     margin-top: 16px;
+}
+
+.search-bar-content {
+    position: absolute;
+    background: white;
+    width: 85%;
+    padding: 20px;
+    margin-top: 7px !important;
+    overflow: scroll;
+    max-height: 80vh;
+}
+.search-bar-content .search-bar-item:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+@media only screen and (max-width: 991px) { /* Phones */ 
+    .collections .collection-item {
+        width: 100%;
+        margin: 1px;
+        height: 0;
+        padding-top: 50% !important;
+        padding-bottom: 50% !important;
+    }
+    .search-bar-content {
+        width: 100%;
+        margin-top: 16px !important;
+        right: 0;
+    }
 }
