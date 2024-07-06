@@ -32,8 +32,10 @@ class CartController extends Controller
         return view('frontend.thank-you',compact('order'));
     }
     public function store (Request $request) {
-        // dd($request->all());
         // Artisan::call('config:cache');
+        // Artisan::call('cache:clear');
+        // // Artisan::call('queue:work');
+        // dd($request->all());
         $last_order = Order::orderBy('id','desc')->first();
         if($last_order == null){
             $o_no = 1000;
