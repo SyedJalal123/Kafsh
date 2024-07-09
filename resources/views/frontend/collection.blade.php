@@ -119,8 +119,8 @@
                     <div class="col-md-3 col-sm-4 col-6 product-grid">
                         <div class="image-box">
                             <a href="{{url('products')}}/{{$product->slug}}"  class="image-box-2">
-                                <img class="image-1" src="{{asset($product->images[0])}}" alt="{{$product->title}}">
-                                <img class="image-2" src="{{asset($product->images[1])}}" alt="{{$product->title}}">
+                                <img class="image-1" src="{{asset($product->images[0])}}" alt="{{$product->title}}" loading="lazy">
+                                <img class="image-2" src="{{asset($product->images[1])}}" alt="{{$product->title}}" loading="lazy">
                             </a>
                             <div class="badge">
                                 @php $per = ($product->price * 100) / $product->compare_price; @endphp
