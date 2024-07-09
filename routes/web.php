@@ -47,6 +47,7 @@ Route::get('/collection', function () {
 Route::get('products/{slug}', function ($slug) {
     $product_page = 1;
     $product = Product::where('slug',$slug)->with('variations')->first();
+    views($product)->record();
     $products = Product::with('variations')->get();
     if(auth()->user() !== null){
         $carts = Cart::where('customer_id',auth()->user()->id)->orderBy('id','Desc')->get();
