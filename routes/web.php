@@ -23,9 +23,14 @@ use App\Models\Collection;
 */
 
 Route::get('/', function () {
+    // dd(views(Product::class)->count());
     $products = Product::with('variations')->get();
     $collections = Collection::all();
     $home = 1;
+
+    // $p = Product::withTrashed()->get();
+    // views($p[2])->collection('Home')->record();
+
     return view('frontend.home_',compact('products','home','collections'));
 });
 Route::get('/about-us', function () {
@@ -47,7 +52,7 @@ Route::get('/collection', function () {
 Route::get('products/{slug}', function ($slug) {
     $product_page = 1;
     $product = Product::where('slug',$slug)->with('variations')->first();
-    views($product)->record();
+    // views($product)->collection('product')->record();
     $products = Product::with('variations')->get();
     if(auth()->user() !== null){
         $carts = Cart::where('customer_id',auth()->user()->id)->orderBy('id','Desc')->get();
