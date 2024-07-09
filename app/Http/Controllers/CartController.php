@@ -25,6 +25,10 @@ class CartController extends Controller
         }else{
             $carts = [];
         }
+
+        $p = Page::where('slug','cart')->first();
+        views($p)->record();
+        
         return view('frontend.cart',compact('carts','cart_page'));
     }
     public function thank_you($id) {

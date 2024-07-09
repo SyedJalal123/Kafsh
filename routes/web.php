@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
 use App\Models\Product;
+use App\Models\Page;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Models\Collection;
@@ -28,37 +29,53 @@ Route::get('/', function () {
     $collections = Collection::all();
     $home = 1;
 
-    // $p = Product::withTrashed()->get();
-    // views($p[2])->collection('Home')->record();
+    $p = Page::all();
+    views($p[0])->record();
 
     return view('frontend.home_',compact('products','home','collections'));
 });
 Route::get('/about-us', function () {
+    $p = Page::where('slug','about-us')->first();
+    views($p)->record();
+
     return view('frontend.about-us');
 });
 Route::get('/contact-us', function () {
+    $p = Page::where('slug','contact-us')->first();
+    views($p)->record();
+
     return view('frontend.contact-us');
 });
 Route::get('/refund-policy', function () {
+    $p = Page::where('slug','refund-policy')->first();
+    views($p)->record();
+
     return view('frontend.refund-policy');
 });
 Route::get('/terms-conditions', function () {
+    $p = Page::where('slug','terms-conditions')->first();
+    views($p)->record();
+
     return view('frontend.terms-conditions');
 });
 Route::get('/collection', function () {
+    $p = Page::where('slug','collection')->first();
+    views($p)->record();
+
     $collections = Collection::all();
     return view('frontend.collections',compact('collections'));
 });
 Route::get('products/{slug}', function ($slug) {
     $product_page = 1;
     $product = Product::where('slug',$slug)->with('variations')->first();
-    // views($product)->collection('product')->record();
     $products = Product::with('variations')->get();
     if(auth()->user() !== null){
         $carts = Cart::where('customer_id',auth()->user()->id)->orderBy('id','Desc')->get();
     }else{
         $carts = [];
     }
+
+    views($product)->record();
     
     return view('frontend.product',compact('product','carts','product_page','products'));
 });
@@ -70,10 +87,16 @@ Route::get('collections/{collection}', function ($collection_slug) {
     if($collection_slug == 'all'){
         $products = Product::with('variations')->get();
         $collection = null;
+
+        $p = Page::where('slug','collection/all')->first();
+        views($p)->record();
     }else{
         $collection = Collection::where('slug',$collection_slug)->first();
         $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
+
+        views($collection)->record();
     }
+
 
     return view('frontend.collection',compact('collection_page','collection','collection_slug','products','min','max','sort'));
 });
@@ -106,6 +129,8 @@ Route::get('collections', function (Request $request) {
         }else if($min == null && $sort == null){
             $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
         }
+
+        views($collection)->record();
     }else{
         if($min !== null && $sort !== null){
             $products = Product::where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
@@ -117,19 +142,31 @@ Route::get('collections', function (Request $request) {
             $products = Product::with('variations')->get();
         }
         $collection = null;
+
+        $p = Page::where('slug','collection/all')->first();
+        views($p)->record();
     }
 
     return view('frontend.collection',compact('collection_page','collection','products','collection_slug','min','max','sort'));
 });
 Route::get('/sign-up', function () {
+    $p = Page::where('slug','sign-up')->first();
+    views($p)->record();
+
     return view('frontend.signup');
 });
 Route::get('/sign-in', function () {
+    $p = Page::where('slug','sign-in')->first();
+    views($p)->record();
+
     return view('frontend.login');
 })->name('sign-in');
 Route::get('/account', function () {
     $orders = Order::where('customer_id', auth()->user()->id)->orderBy('id','Desc')->get();
     return view('frontend.account',compact('orders'));
+
+    $p = Page::where('slug','account')->first();
+    views($p)->record();
 })->name('account')->middleware('front_auth');
 
 Route::post('/sign-up', [App\Http\Controllers\SignupController::class, 'register'])->name('sign-up');
