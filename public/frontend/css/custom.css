@@ -1357,6 +1357,7 @@ a{
     flex-direction: column;
     align-items: center;
     color: white;
+    z-index: 1;
 }
 .collections .collection-item .collection-text *{
     font-family: Poppins;
