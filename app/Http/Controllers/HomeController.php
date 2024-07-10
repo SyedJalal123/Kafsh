@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 use Illuminate\Http\Request;
+use Artisan;
+use Session;
 
 class HomeController extends Controller
 {
