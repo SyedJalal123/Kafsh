@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
 
         'api' => [
             'throttle:api',
+            \PragmaRX\Tracker\Vendor\Laravel\Middlewares\Tracker::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
