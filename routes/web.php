@@ -24,6 +24,11 @@ use App\Models\Collection;
 */
 
 Route::get('/', function () {
+    // Artisan::call('config:cache');
+    // Artisan::call('cache:clear');
+    // // Artisan::call('queue:work');
+    // dd('session');    
+
     // $visitor = Tracker::pageViews(60 * 24 * 30);
     // dd( $visitor );
 
