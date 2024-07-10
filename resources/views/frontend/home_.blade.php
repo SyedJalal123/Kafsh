@@ -134,7 +134,7 @@
                 {{-- style="background-image: url({{asset($collection->image)}});" --}}
                 >
                 <img src="{{asset($collection->image)}}" alt="" style="position: absolute;" loading="lazy">
-                <div class="collection-text">
+                <div class="collection-text" style="z-index: 1;">
                     <p class="collection-title-1 text-uppercase">Leather Collection</p>
                     <p class="collection-title-2 text-uppercase">{{$collection->title}}</p>
                 </div>
