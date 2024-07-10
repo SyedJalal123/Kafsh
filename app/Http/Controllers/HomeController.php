@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $visitor = Tracker::pageViews(60 * 24 * 30);
+        // dd( $visitor );
         return view('home');
     }
 }

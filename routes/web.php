@@ -25,7 +25,7 @@ use App\Models\Collection;
 
 Route::get('/', function () {
     // $visitor = Tracker::pageViews(60 * 24 * 30);
-    // var_dump( $visitor );
+    // dd( $visitor );
 
     // dd(views(Product::class)->count());
     $products = Product::with('variations')->get();
