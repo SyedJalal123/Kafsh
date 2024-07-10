@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Artisan::call('config:cache');
+        // Artisan::call('cache:clear');
+        // // Artisan::call('queue:work');
+        // dd('Cache Clear'); 
+
         // $visitor = Tracker::pageViews(60 * 24 * 30);
         // dd( $visitor );
         return view('home');
