@@ -24,6 +24,9 @@ use App\Models\Collection;
 */
 
 Route::get('/', function () {
+    // $visitor = Tracker::pageViews(60 * 24 * 30);
+    // var_dump( $visitor );
+
     // dd(views(Product::class)->count());
     $products = Product::with('variations')->get();
     $collections = Collection::all();
@@ -88,7 +91,7 @@ Route::get('collections/{collection}', function ($collection_slug) {
         $products = Product::with('variations')->get();
         $collection = null;
 
-        $p = Page::where('slug','collection/all')->first();
+        $p = Page::where('slug','collections/all')->first();
         views($p)->record();
     }else{
         $collection = Collection::where('slug',$collection_slug)->first();
@@ -143,7 +146,7 @@ Route::get('collections', function (Request $request) {
         }
         $collection = null;
 
-        $p = Page::where('slug','collection/all')->first();
+        $p = Page::where('slug','collections/all')->first();
         views($p)->record();
     }
 

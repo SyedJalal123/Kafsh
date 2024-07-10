@@ -139,6 +139,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
         CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -190,7 +191,7 @@ return [
     */
 
     'aliases' => [
-
+        'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
