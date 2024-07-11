@@ -24,6 +24,7 @@ use App\Models\Collection;
 */
 
 Route::get('/', function () {
+    dd(Request::ip());
     // Artisan::call('config:cache');
     // Artisan::call('cache:clear');
     // dd(views(Product::class)->count());
