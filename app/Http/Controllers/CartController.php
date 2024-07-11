@@ -28,7 +28,7 @@ class CartController extends Controller
         }
 
         $p = Page::where('slug','cart')->first();
-        views($p)->record();
+        views($p)->collection(\Request::ip())->record();
         
         return view('frontend.cart',compact('carts','cart_page'));
     }

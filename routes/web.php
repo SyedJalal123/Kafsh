@@ -24,7 +24,6 @@ use App\Models\Collection;
 */
 
 Route::get('/', function () {
-    dd(Request::ip());
     // Artisan::call('config:cache');
     // Artisan::call('cache:clear');
     // dd(views(Product::class)->count());
@@ -33,37 +32,37 @@ Route::get('/', function () {
     $home = 1;
 
     $p = Page::all();
-    views($p[0])->record();
+    views($p[0])->collection(\Request::ip())->record();
 
     return view('frontend.home_',compact('products','home','collections'));
 });
 Route::get('/about-us', function () {
     $p = Page::where('slug','about-us')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     return view('frontend.about-us');
 });
 Route::get('/contact-us', function () {
     $p = Page::where('slug','contact-us')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     return view('frontend.contact-us');
 });
 Route::get('/refund-policy', function () {
     $p = Page::where('slug','refund-policy')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     return view('frontend.refund-policy');
 });
 Route::get('/terms-conditions', function () {
     $p = Page::where('slug','terms-conditions')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     return view('frontend.terms-conditions');
 });
 Route::get('/collection', function () {
     $p = Page::where('slug','collection')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     $collections = Collection::all();
     return view('frontend.collections',compact('collections'));
@@ -78,7 +77,7 @@ Route::get('products/{slug}', function ($slug) {
         $carts = [];
     }
 
-    views($product)->record();
+    views($product)->collection(\Request::ip())->record();
     
     return view('frontend.product',compact('product','carts','product_page','products'));
 });
@@ -92,12 +91,12 @@ Route::get('collections/{collection}', function ($collection_slug) {
         $collection = null;
 
         $p = Page::where('slug','collections/all')->first();
-        views($p)->record();
+        views($p)->collection(\Request::ip())->record();
     }else{
         $collection = Collection::where('slug',$collection_slug)->first();
         $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
 
-        views($collection)->record();
+        views($collection)->collection(\Request::ip())->record();
     }
 
 
@@ -133,7 +132,7 @@ Route::get('collections', function (Request $request) {
             $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
         }
 
-        views($collection)->record();
+        views($collection)->collection(\Request::ip())->record();
     }else{
         if($min !== null && $sort !== null){
             $products = Product::where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
@@ -147,20 +146,20 @@ Route::get('collections', function (Request $request) {
         $collection = null;
 
         $p = Page::where('slug','collections/all')->first();
-        views($p)->record();
+        views($p)->collection(\Request::ip())->record();
     }
 
     return view('frontend.collection',compact('collection_page','collection','products','collection_slug','min','max','sort'));
 });
 Route::get('/sign-up', function () {
     $p = Page::where('slug','sign-up')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     return view('frontend.signup');
 });
 Route::get('/sign-in', function () {
     $p = Page::where('slug','sign-in')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 
     return view('frontend.login');
 })->name('sign-in');
@@ -169,7 +168,7 @@ Route::get('/account', function () {
     return view('frontend.account',compact('orders'));
 
     $p = Page::where('slug','account')->first();
-    views($p)->record();
+    views($p)->collection(\Request::ip())->record();
 })->name('account')->middleware('front_auth');
 
 Route::post('/sign-up', [App\Http\Controllers\SignupController::class, 'register'])->name('sign-up');
