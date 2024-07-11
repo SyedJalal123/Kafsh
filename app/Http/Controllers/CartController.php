@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Collection;
 use App\Models\Cart;
+use App\Models\Page;
 use App\Mail\OrderMail;
 use App\Mail\OrderMailCustomer;
 use Artisan;

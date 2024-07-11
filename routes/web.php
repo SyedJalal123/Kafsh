@@ -90,7 +90,7 @@ Route::get('collections/{collection}', function ($collection_slug) {
         $products = Product::with('variations')->get();
         $collection = null;
 
-        $p = Page::where('slug','collection/all')->first();
+        $p = Page::where('slug','collections/all')->first();
         views($p)->record();
     }else{
         $collection = Collection::where('slug',$collection_slug)->first();
@@ -145,7 +145,7 @@ Route::get('collections', function (Request $request) {
         }
         $collection = null;
 
-        $p = Page::where('slug','collection/all')->first();
+        $p = Page::where('slug','collections/all')->first();
         views($p)->record();
     }
 

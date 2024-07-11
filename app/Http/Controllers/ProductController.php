@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Collection;
 use App\Models\Variation;
+use App\Models\Page;
 
 class ProductController extends Controller
 {
