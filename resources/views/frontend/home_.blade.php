@@ -130,15 +130,7 @@
 @section('content')
     <section class="col-12 row collections m-0 py-5">
         @foreach ($collections as $collection)    
-            <a href="{{url('collections')}}/{{$collection->slug}}" class="col-md-6 col-12 collection-item" 
-                {{-- style="background-image: url({{asset($collection->image)}});" --}}
-                >
-                <img src="{{asset($collection->image)}}" alt="" style="position: absolute;" loading="lazy">
-                <div class="collection-text">
-                    <p class="collection-title-1 text-uppercase">Leather Collection</p>
-                    <p class="collection-title-2 text-uppercase">{{$collection->title}}</p>
-                </div>
-            </a>
+            @include('frontend.includes.collection')
         @endforeach
     </section>
     <section class="col-12 d-flex flex-column align-items-center my-5">
