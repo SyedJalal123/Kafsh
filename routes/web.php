@@ -11,6 +11,7 @@ use App\Models\Page;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Models\Collection;
+use Stevebauman\Location\Facades\Location;
 
 /*
 |--------------------------------------------------------------------------

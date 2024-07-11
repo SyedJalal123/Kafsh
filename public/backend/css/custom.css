@@ -8,8 +8,15 @@
 .tag-button-1:active {
     box-shadow: 0px 0px 0px 0px #c9c9c9;
 }
-
-
+.b-none {
+    border: 0px;
+}
+.outline-none {
+    outline: none;
+}
+.w-100 {
+    width: 100%;
+}
 .dropdown-content {
     display: none;
     position: absolute;
