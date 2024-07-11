@@ -17,8 +17,6 @@ use Session;
 class CartController extends Controller
 {
     public function index () {
-        // Artisan::call('config:cache');
-        // Artisan::call('cache:clear');
         // Session::flush(); 
         // dd(session()->get('order_session'));
         $cart_page = 1;
