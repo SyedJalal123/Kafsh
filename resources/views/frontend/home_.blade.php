@@ -117,11 +117,14 @@
                     <div class="video_title false false">The Little Things</div>
                     <div class="video_subcopy false false">Introducing Summer 24</div>
                 </div>
-                <div class="video_Cta_Container video_Cta2_Container"><a href="women/womens-new-arrivals">
+                <div class="video_Cta_Container video_Cta2_Container">
+                    <a href="#">
                         <div class="video_cta false ctaTransparent">Women&#x27;s New In</div>
-                    </a><a href="men/mens-new-arrivals">
+                    </a>
+                    <a href="#">
                         <div class="video_cta false ctaTransparent">Men&#x27;s New In</div>
-                    </a></div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
