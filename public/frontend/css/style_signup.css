@@ -174,13 +174,13 @@ figure {
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   cursor: pointer; }
   .form-submit:hover {
     background: #4292dc; }
 
-#signin {
-  margin-top: 16px; }
+/* #signin {
+  margin-top: 16px; } */
 
 .signup-image-link {
   font-size: 14px;
@@ -480,3 +480,16 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+.login-button-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@media only screen and (max-width: 991px) { /* Phones */ 
+  .login-button-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

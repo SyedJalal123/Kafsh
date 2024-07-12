@@ -17,7 +17,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{asset('frontend/img/signin-image.jpg')}}" alt="sing up image"></figure>
-                        <a href="{{url('sign-up')}}" class="signup-image-link">Create an account</a>
+                        {{-- <a href="{{url('sign-up')}}" class="signup-image-link">Create an account</a> --}}
                     </div>
 
                     <div class="signin-form">
@@ -37,17 +37,18 @@
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
-                            <div class="form-group form-button">
+                            <div class="form-group form-button login-button-box mt-5">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                <span class="m-2">Or</span><a href="{{url('sign-up')}}" class="signup-image-link">Create an account</a>
                             </div>
                         </form>
                         <div class="social-login">
-                            <span class="social-label">Or login with</span>
+                            {{-- <span class="social-label">Or login with</span>
                             <ul class="socials">
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>
