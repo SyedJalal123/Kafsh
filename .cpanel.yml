@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/uziwapqi/repositories/Kafsh
+    - export DEPLOYPATH=/home/uziwapqi/public_html/
     - /bin/cp * $DEPLOYPATH
