@@ -25,8 +25,8 @@ use Stevebauman\Location\Facades\Location;
 */
 
 Route::get('/', function () {
-    // Artisan::call('config:cache');
-    // Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
     // dd(views(Product::class)->count());
     $products = Product::with('variations')->get();
     $collections = Collection::all();
