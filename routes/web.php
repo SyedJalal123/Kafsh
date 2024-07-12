@@ -38,8 +38,8 @@ Route::get('/', function () {
     return view('frontend.home_',compact('products','home','collections'));
 });
 Route::get('/about-us', function () {
-    Artisan::call('config:cache');
-    Artisan::call('cache:clear');
+    // Artisan::call('config:cache');
+    // Artisan::call('cache:clear');
     $p = Page::where('slug','about-us')->first();
     views($p)->collection(\Request::ip())->record();
 
