@@ -59,6 +59,27 @@ class HomeController extends Controller
                             
         return view('home',compact('views','categories','data','order_data'));
     }
+    public function visitors(){
+        $start = Carbon::parse(Carbon::today()->toDateString().' 00:00:00');
+        $end = Carbon::parse(Carbon::today()->toDateString().' 23:59:59');
+
+        $views = DB::table('views')->whereBetween('viewed_at',[$start, $end])->get();
+        return view('backend.visitors',compact('views'));
+    }
+    public function visitors_post(Request $request){
+        $date = explode(' to ',$request->date);
+        
+        $start = Carbon::parse($date[0].' 00:00:00');
+        
+        if(isset($date[1])){
+            $end = Carbon::parse($date[1].' 23:59:59');
+        }else {
+            $end = Carbon::parse($date[0].' 23:59:59');
+        }
+        $views = DB::table('views')->whereBetween('viewed_at',[$start, $end])->get();
+        
+        return view('backend.visitors',compact('views'));
+    }
     public function chart_filter(Request $request) {
         $date = explode(' to ',$request->date);
         

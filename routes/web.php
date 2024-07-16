@@ -205,6 +205,8 @@ Route::middleware('auth','back_auth')->group(function(){
         Route::post('fullfill_orders', [App\Http\Controllers\OrderController::class, 'fullfill_orders'])->name('fullfill_orders');
         Route::post('chart_filter', [App\Http\Controllers\HomeController::class, 'chart_filter'])->name('chart_filter');
         Route::post('chart_filter_2', [App\Http\Controllers\HomeController::class, 'chart_filter_2'])->name('chart_filter_2');
+        Route::get('visitors', [App\Http\Controllers\HomeController::class, 'visitors'])->name('visitors');
+        Route::post('visitors', [App\Http\Controllers\HomeController::class, 'visitors_post'])->name('visitors');
         Route::resource('customer', CustomerController::class);
 
     });
