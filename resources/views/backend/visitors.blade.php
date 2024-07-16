@@ -30,7 +30,7 @@
             <form action="{{url('backend/visitors')}}" method="POST" id="visitors_filter">
                 @csrf
                 <button class="tag-button-1" type="button">
-                    <input onchange="submit_filter()" type="text" id="kt_datepicker_7" class="b-none outline-none w-100" placeholder="Today" max="{{date('Y-m-d')}}">
+                    <input onchange="submit_filter()" name="date" type="text" id="kt_datepicker_7" class="b-none outline-none w-100" placeholder="Today" max="{{date('Y-m-d')}}">
                 </button>
             </form>
             <table id="kt_datatable_example_5" class="table table-row-bordered gy-5 data_table">
