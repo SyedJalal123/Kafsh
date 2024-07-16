@@ -29,9 +29,9 @@
                     <div id="kt_apexcharts_3" style="height: 250px;"></div>
                 </div>
             </div>
-            {{-- @foreach ($views as $view)
-            {{Location::get($view->collection)->cityName}}<br>
-            @endforeach --}}
+            @foreach ($views as $view)
+                {{Location::get($view->collection)->cityName}}<br>
+            @endforeach
         </div>
         <h1 class="my-5 mx-2">Orders</h1>
         <div class="card card-xxl-stretch">
