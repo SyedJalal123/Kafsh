@@ -181,7 +181,7 @@
                     showConfirmButton: false,
                     timer: 3000,
                     showCloseButton: true,
-                    footer: '<a href="'+PR_URL+'/collectinos/all" class="btn-3">GO TO SHOP</a>'
+                    footer: '<a href="'+PR_URL+'/collections/all" class="btn-3">GO TO SHOP</a>'
                 });
             }
         });
