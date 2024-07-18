@@ -2406,7 +2406,8 @@
                 }
             });
             // alert(variation);
-            variation_title = $('#cart_variation-title-'+variation).val();
+            // variation_title = $('#cart_variation-title-'+variation).val();
+            variation_title = document.getElementById('cart_variation-title-'+variation).value;
             
             // Get Data
             $.ajax({
@@ -2558,7 +2559,7 @@
             variation = null;
             variation_title = null;
 
-            $(".variation-item").each(function () {
+            $(".cart_variation-item").each(function () {
                 if($(this).hasClass("selected")){
                     variation = $(this).text();
                     return false;
@@ -2566,8 +2567,7 @@
             });
 
             // variation_title = $('#variation-title-'+variation).val();
-            variation_title = document.getElementById('variation-title-'+variation).value;
-
+            variation_title = document.getElementById('cart_variation-title-'+variation).value;
 
             product_id = $('#cart_modal_productId').val();
             quantity = $('#cart_quantity_input').val();
