@@ -2363,7 +2363,8 @@
                 }
             });
 
-            variation_title = $('#view_variation-title-'+variation).val();
+            // variation_title = $('#view_variation-title-'+variation).val();
+            variation_title = document.getElementById('view_variation-title-'+variation).value;
             
             // Get Data
             $.ajax({
@@ -2519,8 +2520,8 @@
                 }
             });
 
-            variation_title = $('#view_variation-title-'+variation).val();
-
+            // variation_title = $('#view_variation-title-'+variation).val();
+            variation_title = document.getElementById('view_variation-title-'+variation).value;
 
             product_id = $('#view_modal_productId').val();
             quantity = $('#view_quantity_input').val();
@@ -2564,7 +2565,8 @@
                 }
             });
 
-            variation_title = $('#variation-title-'+variation).val();
+            // variation_title = $('#variation-title-'+variation).val();
+            variation_title = document.getElementById('variation-title-'+variation).value;
 
 
             product_id = $('#cart_modal_productId').val();

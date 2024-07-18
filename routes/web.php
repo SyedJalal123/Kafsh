@@ -126,11 +126,11 @@ Route::get('collections', function (Request $request) {
     if($collection_slug != 'all'){
         $collection = Collection::where('slug',$request->collection_slug)->first();
         if($min !== null && $sort !== null){
-            $products = Product::where('collections','LIKE', "%".$collection->title."%")->where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
+            $products = Product::where('collections','LIKE', "%".$collection->title."%")->where('price','>=',(int)$request->min)->where('price','<=',(int)$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
         }else if($min == null && $sort != null){
             $products = Product::where('collections','LIKE', "%".$collection->title."%")->orderBy($sort_column,$sort_value)->with('variations')->get();
         }else if($sort == null && $min != null){
-            $products = Product::where('collections','LIKE', "%".$collection->title."%")->where('price','>=',$request->min)->where('price','<=',$request->max)->with('variations')->get();
+            $products = Product::where('collections','LIKE', "%".$collection->title."%")->where('price','>=',(int)$request->min)->where('price','<=',(int)$request->max)->with('variations')->get();
         }else if($min == null && $sort == null){
             $products = Product::where('collections','LIKE', "%".$collection->title."%")->with('variations')->get();
         }
@@ -138,11 +138,11 @@ Route::get('collections', function (Request $request) {
         views($collection)->collection(\Request::ip())->record();
     }else{
         if($min !== null && $sort !== null){
-            $products = Product::where('price','>=',$request->min)->where('price','<=',$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
+            $products = Product::where('price','>=',(int)$request->min)->where('price','<=',(int)$request->max)->orderBy($sort_column,$sort_value)->with('variations')->get();
         }else if($min == null && $sort != null){
             $products = Product::orderBy($sort_column,$sort_value)->with('variations')->get();
         }else if($sort == null && $min != null){
-            $products = Product::where('price','>=',$request->min)->where('price','<=',$request->max)->with('variations')->get();
+            $products = Product::where('price','>=',(int)$request->min)->where('price','<=',(int)$request->max)->with('variations')->get();
         }else if($min == null && $sort == null){
             $products = Product::with('variations')->get();
         }
