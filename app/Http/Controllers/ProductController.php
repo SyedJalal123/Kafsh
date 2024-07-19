@@ -70,13 +70,15 @@ class ProductController extends Controller
 
         $latest_product = Product::orderBy('id','Desc')->first();
         foreach($request->variation_title as $key => $title){
-            $variation = new Variation;
-            $variation->product_id = $latest_product->id;
-            $variation->title = $title;
-            $variation->value = $request->variation_value[$key];
-            $variation->price = $request->variation_price[$key];
-            $variation->quantity = $request->variation_quantity[$key];
-            $variation->save();
+            if($title != null){
+                $variation = new Variation;
+                $variation->product_id = $latest_product->id;
+                $variation->title = $title;
+                $variation->value = $request->variation_value[$key];
+                $variation->price = $request->variation_price[$key];
+                $variation->quantity = $request->variation_quantity[$key];
+                $variation->save();
+            }
         }
         
 
