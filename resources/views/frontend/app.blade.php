@@ -81,6 +81,14 @@
     @endif
 </head>
 <body>
+    <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
     @yield('sidebar')
 
     <header>
@@ -184,6 +192,10 @@
                     footer: '<a href="'+PR_URL+'/collections/all" class="btn-3">GO TO SHOP</a>'
                 });
             }
+
+            jQuery(window).on("load",function(){
+                jQuery(".loader").fadeOut(1000);
+            });
         });
         function addCommas(nStr){
             nStr += '';
