@@ -217,21 +217,41 @@ class CartController extends Controller
     }
     public function change_qty(Request $request){
         // dd($request->all());
-        if(auth()->user() == null) {
-            $cart = session()->get('cart');
-            $cart[$request['ids'][0]][$request['ids'][1]]['quantity'] = $request['quantity'];
-            $cart[$request['ids'][0]][$request['ids'][1]]['sub_total'] = (int)$request['quantity'] * (int)$cart[$request['ids'][0]][$request['ids'][1]]['price'];
-            session()->put('cart', $cart);
-    
-            return "success";
+        if($request->quantity == 0){
+            if(auth()->user() == null){
+                $cart = session()->get('cart');
+                if (isset($cart[$request['ids'][0]][$request['ids'][1]])) {
+        
+                    unset($cart[$request['ids'][0]][$request['ids'][1]]);
+                    if(count($cart[$request['ids'][0]]) == 0){
+                        unset($cart[$request['ids'][0]]);
+                    }
+        
+                    session()->put('cart', $cart);
+                }
+            }else {
+                $cart = Cart::where('customer_id',auth()->user()->id)->where('product_id',$request['ids'][0])->where('variation_value',$request['ids'][1])->first();
+                if ($cart != null) {
+                    $cart->delete();            
+                }
+            }
         }else{
-            $cart = Cart::where('customer_id',auth()->user()->id)->where('product_id',$request['ids'][0])->where('variation_value',$request['ids'][1])->first();
+            if(auth()->user() == null) {
+                $cart = session()->get('cart');
+                $cart[$request['ids'][0]][$request['ids'][1]]['quantity'] = $request['quantity'];
+                $cart[$request['ids'][0]][$request['ids'][1]]['sub_total'] = (int)$request['quantity'] * (int)$cart[$request['ids'][0]][$request['ids'][1]]['price'];
+                session()->put('cart', $cart);
+        
+                return "success";
+            }else{
+                $cart = Cart::where('customer_id',auth()->user()->id)->where('product_id',$request['ids'][0])->where('variation_value',$request['ids'][1])->first();
 
-            $cart->quantity = (int)$request['quantity'];
-            $cart->sub_total = (int)$request['quantity'] * (int)$cart->price;
-            $cart->save();
+                $cart->quantity = (int)$request['quantity'];
+                $cart->sub_total = (int)$request['quantity'] * (int)$cart->price;
+                $cart->save();
 
-            return "success";
+                return "success";
+            }
         }
     }
     public function newsletter(Request $request){

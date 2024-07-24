@@ -1197,7 +1197,8 @@
                     data:{ 
                         _token:'{{ csrf_token() }}',
                         ids: id.split('-'),
-                        quantity: $('#quantity_input-'+id).val()
+                        // quantity: $('#quantity_input-'+id).val(),
+                        quantity: document.getElementById('quantity_input-'+id).value,
                     },
                     success: function(response){
                         location. reload();
@@ -1208,10 +1209,12 @@
         $(document).ready(function(){
             $(document).on('click', '.is-minus-cart', function(){
                 id = $(this).attr('id');
-                val = parseInt($('#quantity_input-'+id).val()) - 1;
-                if(val > 0){
-                    $('#quantity_input-'+id).val(parseInt(val));
-                }
+                // val = parseInt($('#quantity_input-'+id).val()) - 1;
+                val = parseInt(document.getElementById('quantity_input-'+id).value) - 1;
+                // if(val > 0){
+                    // $('#quantity_input-'+id).val(parseInt(val));
+                    document.getElementById('quantity_input-'+id).value=parseInt(val);
+                // }
 
                 // Get Data
                 $.ajax({
@@ -1220,7 +1223,8 @@
                     data:{ 
                         _token:'{{ csrf_token() }}',
                         ids: id.split('-'),
-                        quantity: $('#quantity_input-'+id).val()
+                        // quantity: $('#quantity_input-'+id).val(),
+                        quantity: document.getElementById('quantity_input-'+id).value,
                     },
                     success: function(response){
                         location. reload();
@@ -1240,8 +1244,10 @@
 
             $(document).on('click', '.is-plus-cart', function(){
                 id = $(this).attr('id');
-                val = parseInt($('#quantity_input-'+id).val()) + 1;
-                $('#quantity_input-'+id).val(parseInt(val));
+                // val = parseInt($('#quantity_input-'+id).val()) + 1;
+                val = parseInt(document.getElementById('quantity_input-'+id).value) + 1;
+                // $('#quantity_input-'+id).val(parseInt(val));
+                document.getElementById('quantity_input-'+id).value=parseInt(val);
 
                 // Get Data
                 $.ajax({
@@ -1250,7 +1256,8 @@
                     data:{ 
                         _token:'{{ csrf_token() }}',
                         ids: id.split('-'),
-                        quantity: $('#quantity_input-'+id).val()
+                        // quantity: $('#quantity_input-'+id).val(),
+                        quantity: document.getElementById('quantity_input-'+id).value,
                     },
                     success: function(response){
                         location. reload();
