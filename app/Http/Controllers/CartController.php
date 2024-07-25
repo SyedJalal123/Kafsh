@@ -155,7 +155,8 @@ class CartController extends Controller
                 session()->put('cart', $cart);
             }elseif (isset($cart[$request['id']][$request['variation'][1]])) {
                 $cart[$request['id']][$request['variation'][1]]['quantity'] = (int)$cart[$request['id']][$request['variation'][1]]['quantity'] + (int)$request['quantity'];
-                $cart[$request['id']][$request['sub_total']] = (int)$request['price'] * ((int)$request['quantity'] + (int)$cart[$request['id']][$request['variation'][1]]['quantity']);
+                // $cart[$request['id']][$request['sub_total']] = (int)$request['price'] * ((int)$request['quantity'] + (int)$cart[$request['id']][$request['variation'][1]]['quantity']);
+                $cart[$request['id']][$request['variation'][1]]['sub_total'] = (int)$request['price'] * (int)$cart[$request['id']][$request['variation'][1]]['quantity'];
                 session()->put('cart', $cart);
             }else{
                 $cart[$request['id']][$request['variation'][1]] = $this->sessionData($request);
