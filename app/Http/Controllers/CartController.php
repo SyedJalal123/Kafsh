@@ -98,7 +98,7 @@ class CartController extends Controller
         }
 
         if(auth()->user() == null){
-            foreach($request->product_id as $product){
+            foreach($request->product_id as $key => $product){
                 $product_arr = explode('-', $product);
                 $cart = session()->get('cart');
                 if (isset($cart[$request->product_id[$key]][$request->product_variation_value[$key]])) {
