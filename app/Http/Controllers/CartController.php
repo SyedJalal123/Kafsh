@@ -55,7 +55,7 @@ class CartController extends Controller
         $order->order_no = $o_no + 1;
 
         $product_array = [];
-        foreach($request->product as $key => $product_id){
+        foreach($request->product_id as $key => $product_id){
             $product_array[$request->product_id[$key]][$request->product_variation_value[$key]] = [
                 'id' => $request->product_id[$key],
                 'variation_title' => $request->product_variation_title[$key],
@@ -98,21 +98,21 @@ class CartController extends Controller
         }
 
         if(auth()->user() == null){
-            foreach($request->product as $product){
+            foreach($request->product_id as $product){
                 $product_arr = explode('-', $product);
                 $cart = session()->get('cart');
-                if (isset($cart[$product_arr[0]][$product_arr[2]])) {
+                if (isset($cart[$request->product_id[$key]][$request->product_variation_value[$key]])) {
     
-                    unset($cart[$product_arr[0]][$product_arr[2]]);
-                    if(count($cart[$product_arr[0]]) == 0){
-                        unset($cart[$product_arr[0]]);
+                    unset($cart[$request->product_id[$key]][$request->product_variation_value[$key]]);
+                    if(count($cart[$request->product_id[$key]]) == 0){
+                        unset($cart[$request->product_id[$key]]);
                     }
         
                     session()->put('cart', $cart);
                 }
             }
         }else {
-            foreach($request->product as $key => $product){
+            foreach($request->product_id as $key => $product){
                 $product_arr = explode('-', $product);
                 $cart = Cart::where('product_id', $request->product_id[$key])->where('variation_value', $request->product_variation_value[$key])->where('customer_id', auth()->user()->id)->first();
                 if ($cart != null) {
@@ -135,7 +135,7 @@ class CartController extends Controller
 
         $request->request->add(['order' => $order]);
 
-        $this->order_email($request);
+        // $this->order_email($request);
 
         return redirect()->route('thank-you', [$order->id]);
     }
