@@ -17,7 +17,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::with('orders')->withSum('orders', 'total')->get();
+        $customers = Customer::with('orders')->withSum('orders', 'total')->orderby('id','desc')->get();
 
         return view('backend.customer',compact('customers'));
     }

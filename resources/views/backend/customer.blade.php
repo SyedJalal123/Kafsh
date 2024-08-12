@@ -196,7 +196,7 @@
 
     <script>
         table = $("#kt_datatable_example_5").DataTable({
-            ordering:true,
+            ordering:false,
         });
         // #myInput is a <input type="text"> element
         $('#search_input').on( 'keyup', function () {

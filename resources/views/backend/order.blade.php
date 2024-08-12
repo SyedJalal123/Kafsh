@@ -225,7 +225,7 @@
 
     <script>
         table = $("#kt_datatable_example_5").DataTable({
-            // ordering:false,
+            ordering:false,
             select: {
                 style: 'multi'
             }
