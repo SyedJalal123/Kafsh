@@ -98,7 +98,7 @@
             <input type="hidden" id="success-subscribed" value="0">
         @endif
         <div class="Info__Bar">
-            {{-- <a class="Info__Bar__Text" href="#">Free delivery on orders over £250</a> --}}
+            <a class="Info__Bar__Text" href="#">Free delivery all over the Pakistan</a>
             <ul class="Info__Bar__Menu">
                 <li><a class="Info__Bar__Menu__Link" href="storelocator">Store Locator</a></li>
                 <li><a class="Info__Bar__Menu__Link" href="sign-in">Sign In</a></li>
