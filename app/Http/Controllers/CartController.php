@@ -288,8 +288,8 @@ class CartController extends Controller
     }
     protected function order_email(Request $request){
         // dd($request->all());
-        // Mail::to($request->email)->send(new OrderMailCustomer());
-        Mail::to('info@kafsh.pk')->send(new OrderMail());
+        Mail::to($request->email)->send(new OrderMailCustomer());
+        Mail::to('kafshwearings@gmail.com')->send(new OrderMail());
 
         return redirect()->back()->with('success','Order Confirmed!');
     }
