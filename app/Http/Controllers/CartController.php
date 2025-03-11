@@ -74,7 +74,7 @@ class CartController extends Controller
         $order->address = $request->address;
         $order->city = $request->city;
         $order->total = $request->total;
-        $order->save();
+        // $order->save();
 
         $customer = Customer::where('email',$request->email)->first();
         if($customer == null){
@@ -134,7 +134,7 @@ class CartController extends Controller
         }
 
         $request->request->add(['order' => $order]);
-
+        dd($request);
         $this->order_email($request);
 
         return redirect()->route('thank-you', [$order->id]);
