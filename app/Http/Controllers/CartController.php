@@ -12,6 +12,7 @@ use App\Models\Cart;
 use App\Models\Page;
 use App\Mail\OrderMail;
 use App\Mail\OrderMailCustomer;
+use App\Mail\TestEmail;
 use Artisan;
 use Session;
 
@@ -37,6 +38,9 @@ class CartController extends Controller
         return view('frontend.thank-you',compact('order'));
     }
     public function store (Request $request) {
+        Mail::to('syedjalal339@gmail.com')->send(new TestEmail());
+        dd('fds');
+
         // Artisan::call('config:cache');
         // Artisan::call('cache:clear');
         // // Artisan::call('queue:work');
@@ -74,7 +78,7 @@ class CartController extends Controller
         $order->address = $request->address;
         $order->city = $request->city;
         $order->total = $request->total;
-        $order->save();
+        // $order->save();
 
         $customer = Customer::where('email',$request->email)->first();
         if($customer == null){

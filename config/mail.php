@@ -40,6 +40,7 @@ return [
         ],
     ],
 
+
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
@@ -50,6 +51,10 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
+        ],
+
+        'brevo' => [
+            'transport' => 'brevo',
         ],
 
         'ses' => [
@@ -76,6 +81,13 @@ return [
 
         'array' => [
             'transport' => 'array',
+        ],
+    ],
+
+    'transport' => [
+        // Other transports
+        'brevo' => [
+            'apiKey' => env('BREVO_API_KEY'),
         ],
     ],
 
