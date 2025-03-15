@@ -30,7 +30,8 @@ class TestEmail extends Mailable
     {
         return $this->view('testemail')  // The view that defines the email body
         ->with([
-            'name' => 'User'
+            'name' => 'User',
+            'subject' => 'Test'
         ]);
     }
 }
