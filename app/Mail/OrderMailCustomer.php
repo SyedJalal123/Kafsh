@@ -29,7 +29,7 @@ class OrderMailCustomer extends Mailable
      */
     public function build(Request $request)
     {
-        dd($request->order);
+        // dd($request->order);
         $subject = "[Kafsh] Order #".$request->order->order_no." confirmed";
         $customer = 1;
 
