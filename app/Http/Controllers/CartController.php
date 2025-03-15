@@ -74,7 +74,7 @@ class CartController extends Controller
         $order->address = $request->address;
         $order->city = $request->city;
         $order->total = $request->total;
-        // $order->save();
+        $order->save();
 
         $customer = Customer::where('email',$request->email)->first();
         if($customer == null){
