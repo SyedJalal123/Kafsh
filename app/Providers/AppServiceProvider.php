@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         // });
 
 
-        // Register custom mail transport for Brevo
+        // // Register custom mail transport for Brevo
         // $this->app->singleton(MailManager::class, function ($app) {
         //     $mailer = new MailManager($app);
 

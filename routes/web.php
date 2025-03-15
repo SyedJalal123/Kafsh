@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\Cart;
 use App\Models\Collection;
 use Stevebauman\Location\Facades\Location;
+use App\Services\BrevoMailService;
 
 /*
 |--------------------------------------------------------------------------

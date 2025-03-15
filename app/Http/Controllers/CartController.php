@@ -40,6 +40,8 @@ class CartController extends Controller
     public function store (Request $request) {
         Mail::to('syedjalal339@gmail.com')->send(new TestEmail());
         dd('fds');
+        // Again setup bervo if smtp not works
+
 
         // Artisan::call('config:cache');
         // Artisan::call('cache:clear');
@@ -78,7 +80,7 @@ class CartController extends Controller
         $order->address = $request->address;
         $order->city = $request->city;
         $order->total = $request->total;
-        // $order->save();
+        $order->save();
 
         $customer = Customer::where('email',$request->email)->first();
         if($customer == null){

@@ -53,10 +53,6 @@ return [
             'auth_mode' => null,
         ],
 
-        'brevo' => [
-            'transport' => 'brevo',
-        ],
-
         'ses' => [
             'transport' => 'ses',
         ],
@@ -81,13 +77,6 @@ return [
 
         'array' => [
             'transport' => 'array',
-        ],
-    ],
-
-    'transport' => [
-        // Other transports
-        'brevo' => [
-            'apiKey' => env('BREVO_API_KEY'),
         ],
     ],
 
