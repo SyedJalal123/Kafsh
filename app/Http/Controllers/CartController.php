@@ -38,6 +38,7 @@ class CartController extends Controller
         return view('frontend.thank-you',compact('order'));
     }
     public function store (Request $request) {
+        Artisan::call('config:cache');
         Mail::to('syedjalal339@gmail.com')->send(new TestEmail());
         dd('fds');
         // Again setup bervo if smtp not works
