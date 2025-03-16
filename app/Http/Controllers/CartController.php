@@ -137,7 +137,7 @@ class CartController extends Controller
         $request->request->add(['order' => $order]);
         // dd($request);
         $this->order_email($request);
-
+        dd('email sent');
         return redirect()->route('thank-you', [$order->id]);
     }
     public function addToCart(Request $request){
