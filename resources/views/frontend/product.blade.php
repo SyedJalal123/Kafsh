@@ -34,6 +34,16 @@
 @section('content')
     <section class="main col-12">
         <div class="row">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        <li>Order not completed</li>
+                    </ul>
+                </div>
+            @endif
             <div class="thumbnail-prnt col-md-1 ms-5">
                 @php $product_images = []; @endphp
                 <ul id="thumbnails" class="thumbnails">
@@ -226,7 +236,7 @@
                         </svg>
                     </div>
                     <!--end::Close-->
-                    <form action="{{url('cart')}}" method="post">
+                    <form action="{{url('cart')}}" method="post" id="main_buynow_form">
                         @csrf
                         <input type="hidden" id="product" name="product[]" value="">
                         <input type="hidden" id="product_id" name="product_id[]" value="{{$product->id}}">
@@ -300,14 +310,14 @@
                         </div>
                         <div class="row d-flex align-items-center mb-2 mr-sm-2">
                             <div class="col-sm-3">
-                                <span class="required text-3">Email</span>
+                                <span class="required text-3">Email<span class="text-danger">*</span></span>
                             </div>
                             <div class="col-sm-9">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                     </div>
-                                    <input type="email" class="form-control email" name="email" placeholder="Email (optional)">
+                                    <input type="email" class="form-control email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
@@ -1156,7 +1166,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-7 w-100 mt-3" id="submit-button" onclick="disabled_button('buynow_modal','submit-button')" type="submit"></button>
+                        <button class="btn-7 w-100 mt-3" id="submit-button" 
+                        onclick="disabled_button('buynow_modal','submit-button')" 
+                        type="submit"></button>
                     </form>
                 </div>
 
@@ -1249,14 +1261,14 @@
                         </div>
                         <div class="row d-flex align-items-center mb-2 mr-sm-2">
                             <div class="col-sm-3">
-                                <span class="required text-3">Email</span>
+                                <span class="required text-3">Email<span class="text-danger">*</span></span>
                             </div>
                             <div class="col-sm-9">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                     </div>
-                                    <input type="email" class="form-control email" name="email" placeholder="Email (optional)">
+                                    <input type="email" class="form-control email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
@@ -2348,7 +2360,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                     </div>
-                                    <input type="email" class="form-control email" name="email" placeholder="Email (optional)">
+                                    <input type="email" class="form-control email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
@@ -3722,5 +3734,14 @@
 
             
         }
+        // function submit_form(id) {
+        //     if ($('#category').val() === '' || $('#category').val() === null) {
+        //         alert('Please select a category!');
+        //         return false; // Prevent form submission
+        //     }else{
+
+        //     }
+        //     disabled_button('buynow_modal','submit-button')
+        // }
     </script>
 @endsection

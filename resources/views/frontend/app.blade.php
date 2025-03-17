@@ -209,7 +209,7 @@
             return x1 + x2;
         }
         function disabled_button(id,button){
-            if ($('#'+id+' .name').val() != '' && $('#'+id+' .phone').val() != '' && $('#'+id+' .email').val() != '' && $('#'+id+' .city-select').val() != '' && $('#'+id+' .address').val() != ''){
+            if ($('#'+id+' .name').val() != '' && $('#'+id+' .phone').val() != '' && $('#'+id+' .email').val() != '' && $('#'+id+' .city-select').val() != '' && $('#'+id+' .city-select').val() != null && $('#'+id+' .address').val() != ''){
                 $('#'+id+' #'+button).prop('disabled', true);
                 $('#'+id+' form').submit();
             }

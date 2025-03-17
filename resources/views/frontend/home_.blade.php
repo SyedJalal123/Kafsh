@@ -423,7 +423,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                     </div>
-                                    <input type="email" class="form-control email" name="email" placeholder="Email (optional)">
+                                    <input type="email" class="form-control email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
@@ -1372,7 +1372,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
                                     </div>
-                                    <input type="email" class="form-control email" name="email" placeholder="Email (optional)">
+                                    <input type="email" class="form-control email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
                         </div>

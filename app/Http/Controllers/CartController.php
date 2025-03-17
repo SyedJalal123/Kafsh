@@ -42,6 +42,11 @@ class CartController extends Controller
         // Artisan::call('cache:clear');
         // // Artisan::call('queue:work');
         // dd($request->all());
+
+        $request->validate([
+            'city' => 'required',
+        ]);
+
         $last_order = Order::orderBy('id','desc')->first();
         if($last_order == null){
             $o_no = 1000;
