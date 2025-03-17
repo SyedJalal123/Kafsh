@@ -61,7 +61,7 @@ class ProductController extends Controller
         
         $gallery_images = [];
         foreach($request->images as $key => $image){
-            $images_Name = time() . '.' . $image->getClientOriginalName();
+            $images_Name = time() . '.' . rand(1, 99999) . '.' . pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $image->move(public_path('frontend/product_images'), $images_Name);
             array_push($gallery_images,'frontend/product_images/'.$images_Name);
         }
