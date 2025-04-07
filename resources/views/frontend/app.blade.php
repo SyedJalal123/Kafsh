@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{url('frontend/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{url('frontend/css/owl.theme.default.min.css')}}">
+    <link rel="icon" type="image/png" href="{{asset('logo-2.png')}}">
     @yield('styles')
     <style>
         @font-face {
