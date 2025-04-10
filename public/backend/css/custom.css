@@ -41,3 +41,47 @@
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.logo-box {
+    color: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .logo-box .kafsh {
+    font-size: 25px !important;
+    font-family: 'ArterioNonCommercial' !important;
+    letter-spacing: 16px !important;
+    margin-top: -10px !important;
+  }
+  .logo-box .pakistan {
+    font-family: 'ABChanel Corpo Regular' !important;
+    font-size: 9px !important;
+    letter-spacing: 4px !important;
+    margin-top: -8px !important;
+  }
+
+
+  .logo-box-phone {
+    color: rgb(0, 0, 0) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 8%;
+  }
+  .logo-box-phone .kafsh {
+    font-size: 18px !important;
+    font-family: 'ArterioNonCommercial' !important;
+    letter-spacing: 14px !important;
+    font-weight: 600 !important;
+    margin-left: 5px !important;
+  }
+  .logo-box-phone .pakistan {
+    font-family: 'ABChanel Corpo Regular' !important;
+    font-size: 7px !important;
+    letter-spacing: 3px !important;
+    margin-top: -3px !important;
+    margin-right: -4px !important;
+  }

@@ -3,7 +3,10 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="{{asset('/backend/home')}}">
-            <img alt="Logo" src="{{asset('backend/assets/media/logos/logo-1-dark.svg')}}" class="h-25px logo" />
+            <div class="logo-box">
+                <p class="m-0 kafsh">KAFSH</p>
+                <P class="m-0 pakistan">PAKISTAN</P>
+            </div>
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->

@@ -15,10 +15,10 @@
     <!--end::Actions-->
 @endsection
 @section('content')
-    <div class="col-xxl-4">
+    <div class="">
         <!--begin::Mixed Widget 2-->
         <h1 class="my-5 mx-2">Views</h1>
-        <div class="card card-xxl-stretch">
+        <div class="card">
             <div class="card card-bordered">
                 <div class="card-body main-card-body">
                     <div>
@@ -34,7 +34,7 @@
             @endforeach --}}
         </div>
         <h1 class="my-5 mx-2">Orders</h1>
-        <div class="card card-xxl-stretch">
+        <div class="card">
             <div class="card card-bordered">
                 <div class="card-body main-card-body-2">
                     <div>

@@ -62,9 +62,12 @@
 							</div>
 							<!--end::Aside mobile toggle-->
 							<!--begin::Mobile logo-->
-							<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-								<a href="../../demo1/dist/index.html" class="d-lg-none">
-									<img alt="Logo" src="{{asset('backend/assets/media/logos/logo-2.svg')}}" class="h-30px" />
+							<div class="d-flex justify-content-center flex-grow-1 flex-lg-grow-0">
+								<a href="{{asset('/backend/home')}}" class="d-lg-none">
+									<div class="logo-box-phone">
+										<p class="m-0 kafsh">KAFSH</p>
+										<P class="m-0 pakistan">PAKISTAN</P>
+									</div>
 								</a>
 							</div>
 							<!--end::Mobile logo-->
