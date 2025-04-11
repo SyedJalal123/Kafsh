@@ -171,7 +171,7 @@
                     @foreach($orders as $key => $order)
                     <tr>
                         <td @if($order->status == 'Cancelled') class="text-decoration-line-through" @endif>#{{$order->order_no}}</td>
-                        <td @if($order->status == 'Cancelled') class="text-decoration-line-through" @endif>{{date('d M - H:i a', strtotime($order->created_at))}}</td>
+                        <td @if($order->status == 'Cancelled') class="text-decoration-line-through" @endif>{{date('d M - h:i a', strtotime($order->created_at))}}</td>
                         <td @if($order->status == 'Cancelled') class="text-decoration-line-through" @endif>{{$order->name}}</td>
                         <td> 
                             @if($order->status == 'Fulfilled') <span class="badge badge-success">Fulfilled</span> 
